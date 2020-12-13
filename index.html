@@ -11,7 +11,7 @@
 		Nothing.<br>
 		<br>
 		Tools<br>
-		<button onclick="window.open('https://prowebsiteadmin.github.io/prowebsite/indexdata/calendar.html','width=800px, height=600px'")>캘린더</button>
+		<input type="button" value="캘린더"  onclick="url()"/>
 		<br>
 		<button onclick="location.href='https://prowebsiteadmin.github.io/prowebsite/indexdata/youtube.html'">자기소개서</button>
 		<br>
@@ -22,12 +22,16 @@
 <script>
             function script() {
               var input = document.getElementById("code").value;
-              if (input=="youtube") {
+              if (input=="G2RTH5GOW59@") {
                 location.href="https://www.youtube.com/channel/UCBExOCc5mh6NNrEPRyg6hAw";
             }
             else {
                 alert("코드 틀립니다");
             }
             }
+	function url() {
+		var url="https://prowebsiteadmin.github.io/prowebsite/indexdata/calendar.html"
+		window.open(url,"","width=800,height=600,left=600");
+	}
 	</script>
 </html>
