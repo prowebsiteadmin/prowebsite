@@ -13,7 +13,8 @@
         <option id = 'naver' vaule = 'naver'>naver</option>
       </select>
     </form>
-      <button onclick="location.href = 'https://prowebsiteadmin.github.io/prowebsite/'">돌아가기</button>
+      <button onclick="location.href = 'https://prowebsiteadmin.github.io/prowebsite/'">돌아가기</button><br>
+      검색창으로 돌아올려면 https://prowebsiteadmin.github.io/prowebsite/indexdata/search.html 로 오세요!
    </body>
    <script>
       const Searching = Search.prototype;
@@ -35,9 +36,9 @@
             let keyword = this.keyword.vaule;
             
             if(engine === 'google'){
-               window.open('https://www.google.co.kr/search?q=' + keyword;)
+               location.href = 'https://www.google.co.kr/search?q=' + keyword;
             }else if(engine==='naver'){
-               window.open('https://search.naver.com/search.naver?query=' + keyword;)
+               location.href = 'https://search.naver.com/search.naver?query=' + keyword;
             }
          });
       }
