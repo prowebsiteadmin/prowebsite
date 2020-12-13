@@ -2,15 +2,15 @@
    <body>
      <title>프로 웹사이트 - 검색</title>
     <form class = 'search'>
-      <button class = "img-button" type = "submit" name = "click" vaule = "">
+      <button class = "img-button" type = "submit" name = "click" value = "">
          검색하기
       </button>
       
       <input class = 'keyword' type = 'text' name = 'search' maxlength = 255 vaule = "" autocomplete = "off">
       
       <select class = 'SelectSearch' name = 'WhichSearch'>
-        <option id = 'google' vaule = 'google'>Google</option>
-        <option id = 'naver' vaule = 'naver'>Naver</option>
+        <option id = 'google' value = 'google'>Google</option>
+        <option id = 'naver' value = 'naver'>Naver</option>
       </select>
     </form>
       <button onclick="location.href = 'https://prowebsiteadmin.github.io/prowebsite/'">돌아가기</button><br>
@@ -24,16 +24,17 @@
          this.engine = document.querySelector('.SelectSearch');
          this.button = document.querySelector('.img-button');
          this.form = docyment.qureySelector('.search');
+         
+         this.Engine();
       }
-      new Search();
       
       Searching.Engine = function(){
          this.form.addEventListener('submit', e => {
             
             e.preventDefault();
             
-            let engine = this.engine.vaule;
-            let keyword = this.keyword.vaule;
+            let engine = this.engine.value;
+            let keyword = this.keyword.value;
             
             if(engine === 'google'){
                location.href = 'https://www.google.co.kr/search?q=' + keyword;
