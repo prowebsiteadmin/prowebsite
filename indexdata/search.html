@@ -14,4 +14,31 @@
       </select>
     </form>
    </body>
+   <script>
+      const Searching = Search.prototype;
+      
+      function Search(){
+         this.keyword = document.querySelector('input[name = "search"]');
+         this.engine = document.querySelector('.SelectSearch');
+         this.button = document.querySelector('.img-button');
+         this.form = docyment.qureySelector('.search');
+      }
+      new Search();
+      
+      Searching.Engine = function(){
+         this.form.addEventListener('submit', e => {
+            
+            e.preventDefault();
+            
+            let engine = this.engine.vaule;
+            let keyword = this.keyword.vaule;
+            
+            if(engine === 'google'){
+               window.open = 'https://www.google.co.kr/search?q=' + keyword;
+            }else if(engine==='naver'){
+               window.open = 'https://search.naver.com/search.naver?query=' + keyword;
+            }
+         });
+      }
+   </script>
 </html>
