@@ -49,11 +49,15 @@
 	function search() {
 		var search = document.getElementById("search").value;
 		var engine = document.getElementByName("engine").length;
-		if (document.getElementByName("engine")=="google") {
-			window.open("https://www.google.com/search?q=" + search);
-		}else if (document.getElementByName("engine")=="naver") {
-			window.open("https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=" + search)
+        	for (var i=0; i<check_count; i++) {
+            	if (document.getElementsByName("fruit")[i].checked == true) {
+                	if (document.getElementsByName("engine")=="naver") {
+				window.open("https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=" + search);
+			}else if (document.getElementsByName("engine")=="google") {
+				window.open("https://www.google.com/search?q=" + search);
+			}
 		}
+            }
 	}
 	</script>
 </html>
