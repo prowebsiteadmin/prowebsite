@@ -4,7 +4,11 @@
 		<img src="https://prowebsiteadmin.github.io/prowebsite/indexdata/image/logo.png" alt="이미지가 맛이 갔습니다!"><br>
 		<input type="text" id="search" value="검색">
 		<button onclick="search();">검색</button>
-		Search Engine: <input type="radio" id="naver" name="engine">Naver<input type="radio" id="google" name="engine" checked>Google<br>
+		Search Engine:
+		<select id="engine" size="1">
+			<option value="naver">Naver</option>
+			<option value="google" select>Google</option>
+		</select><br>
 		ADOFAI Map download<br>
 		<br><br><a href="https://prowebsiteadmin.github.io/prowebsite/adofai/Dustwind_adofai.zip" download="Dustwind_by_시러시러">얼불춤 Dustwind 다운로드</a>
 		<br><br><a href="https://prowebsiteadmin.github.io/prowebsite/adofai/Final_Hope.zip" download="Final_Hope_by_시러시러">얼불춤 Final Hope 다운로드</a>
@@ -48,14 +52,12 @@
 	}
 	function search() {
 		var search = document.getElementById("search").value;
-		var engine = document.getElementByName("engine").length;
-        	for (var i=0; i<check_count; i++) {
-            	if (document.getElementsByName("fruit")[i].checked == true) {
-                	if (document.getElementsByName("engine")=="naver") {
-				window.open("https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=" + search);
-			}else if (document.getElementsByName("engine")=="google") {
-				window.open("https://www.google.com/search?q=" + search);
-			}
+		var engine = document.getElementById("engine").value;
+		if (document.getElementById("engine")=="naver") {
+			window.open("https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=" + search);
+		}
+		if (document.getElementById("engine")=="google") {
+			window.open("https://www.google.com/search?q=" + search):
 		}
             }
 	}
