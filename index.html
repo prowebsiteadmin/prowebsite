@@ -3,8 +3,8 @@
 		<title>프로웹사이트</title>
 		<img src="https://prowebsiteadmin.github.io/prowebsite/indexdata/image/logo.png" alt="이미지가 맛이 갔습니다!"><br>
 		<input type="text" id="search" value="검색">
-		<button onclick="search();">검색</button><br>
-		Search Engine: <input type="radio" id="naver" name="engine">Naver<input type="radio" id="google" name="engine" checked>Google
+		<button onclick="search();">검색</button>
+		Search Engine: <input type="radio" id="naver" name="engine">Naver<input type="radio" id="google" name="engine" checked>Google<br>
 		ADOFAI Map download<br>
 		<br><br><a href="https://prowebsiteadmin.github.io/prowebsite/adofai/Dustwind_adofai.zip" download="Dustwind_by_시러시러">얼불춤 Dustwind 다운로드</a>
 		<br><br><a href="https://prowebsiteadmin.github.io/prowebsite/adofai/Final_Hope.zip" download="Final_Hope_by_시러시러">얼불춤 Final Hope 다운로드</a>
@@ -48,7 +48,12 @@
 	}
 	function search() {
 		var search = document.getElementById("search").value;
-		window.open("https://www.google.com/search?q=" + search);
+		var engine = document.getElementByName("engine").vaule;
+		if (document.getElementByName("engine")=="google") {
+			window.open("https://www.google.com/search?q=" + search);
+		}else if (document.getElementByName("engine")=="naver") {
+			window.open("https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=" + search)
+		}
 	}
 	</script>
 </html>
