@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <body bgcolor="#000000">
-    <span style="color:white">
-      Welcome! 웹하드입니다.
-      - 사용법 -
-      - 밑 버튼으로 업로드 하세요.
-      - ID를 입력해 다운로드 하세요.
-      <input type="text" name="downloadid" size="6" maxlength="6">여기에 다운로드 ID를 입력해주세요.
+<head>
+<meta charset="EUC-KR">
+<title>시러시러 웹하드</title>
+</head>
+<body bgcolor="#000000">
+<fieldset>
+  <span style = "color: green;">
+     <legend>파일 업로드</legend>
+     <table>
+     <form action="UploadService">
+          <tr>
+              <td>글쓴이 : </td>
+              <td><input type="text" name="author"/></td>
+          </tr>
+          <tr>
+              <td>제목 : </td>
+              <td><input type="text" name="title"/></td>
+          </tr>
+          <tr>
+              <td>글쓴이 : </td>
+              <td><input type="file" value="파일 선택" name="file"/></td>
+          </tr>
+          <tr>
+              <td colspan="2"><input type="submit" value="업로드"/></td>
+          </tr>
+          </form>
+     </table>
     </span>
-  </body>
-  <script>
-  </script>
+</fieldset>
+</body>
 </html>
