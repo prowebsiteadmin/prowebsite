@@ -1,0 +1,96 @@
+<html>
+    <head>
+        <script type="text/javascript" src="/jszip/jszip.min.js"></script>
+        <script type="text/javascript" src="/jszip/jszip-utils.min.js"></script>
+        <script type="text/javascript" src="/jszip/download.js"></script>
+        <script>
+            var zip = new JSZip();
+            
+            // 사용자가 파일을 선택하면 어떤 파일들인지 보여줌.
+            function update_zip_list() {
+                var html = '<table border="1">'
+                
+                zip.foreach(
+                    function(relativePath, entry)
+                    {
+                        html += '<tr>';
+                        html += '<td>' + entry.name + '</td>';
+                        html += '<td>' + (entry.dir ? 'dir' : 'file') + '</td>';
+                        html += '</tr>';
+                    }
+                );
+                
+                html += '</table>'
+                zip_list.innerHTML = html;
+            }
+            // 사용자가 파일을 선택하면 압축대상으로 넣고, 파일 목록을 보여주는 코드 수행.
+            function myOnFileChanged(evt) {
+                var files = document.getEmementById('file4upload').files;
+
+                for(var i=0; i < files.length; i++) {
+                    var file = files[i];
+                    zip.file(file.name, file);
+                }
+                // 파일목록 업데이트
+                update_zip_list();
+            }
+
+            // 압축이 진행되는 과정에 보여줄 메시지
+            function showMessage(msg) {
+                document.getElementById('msg_output').innerText = msg;
+            }
+            // 압축이 진행되는 과정에 보여줄 메시지(n% 출력)
+            function updatePercent(percent) {
+                document.getElementById('prograss').innerText = '' + percent + '%'
+            }
+            // 다운로드를 누르면, 실제 압축이 시작됨.
+            function myOnDownload(evt) {
+                zip.generateAsync({
+                    type: "blob",// blob or base64 or so on
+                    // compression: 기본값은 "STORE"로 되어있어 압축을 하지 않는다.
+                    // zip파일에 강제로 이 코드를 넣어줘야 압축을 한다.
+                    compression: "DEFLATE"
+
+                },
+                // 압축의 진행상황을 사용자에게 보여주기 위한 필수 콜백함수
+                function updateCallback(metadata) {
+                    var msg = "progression : "+metadata.percent.toFixed(2)+" %";
+                    if(metadata.currentFile) {
+                        msg += ", 현재 파일 = "+metadata.currentFile;
+                    }
+                    showMessage(msg);
+                    updatePercent(metadata.percent|0);
+                }
+                ).then(
+                    function(zipContents) {
+                    // 압축이 다되면 다운로드를 한다.
+                    var filename = 'filename.zip'
+
+                    download(zipContents, filename, "application/octet-stream");
+                    }
+
+                );
+            }
+            
+        </script>
+        
+    </head>
+    <body bgcolor="#000000">
+        <span style="color: #FFFFFF;">
+            <img src="https://prowebsiteadmin.github.io/prowebsite/indexdata/image/logo.png" alt="로고"><br>
+            <button onclick="back();">메인 페이지</button><br>
+            <form>
+            <input id="file4upload" type="file" name="name" multiple />
+            <input id="downloadbtn" type="button" value="download" />
+            </form>
+            <div id="msg_output"></div>
+            <div id="progress"></div>
+            <div id="zip_list"></div>
+        </span>
+    </body>
+    <script>
+        function back() {
+            location.href('https://prowebsiteadmin.github.io/prowebsite/')
+        }
+    </script>
+</html>
